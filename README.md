@@ -29,19 +29,16 @@ Oyunun ana arayüzü. Kullanıcı tahminlerini yapar, renkli ipuçlarını gör�
 * **Gri:** Sayı yok.
 
 ![Oyun Ekranı](screenshots/oyun_ekrani.png)
-*(Buraya oyun ekranı görüntüsü gelecek - Ekran görüntüsü 2025-12-21 161706.png)*
 
 ### 2. Giriş Ekranı
 Kullanıcıların oyuna erişmek için kullandığı güvenli giriş paneli.
 
 ![Giriş Ekranı](screenshots/giris_ekrani.png)
-*(Buraya giriş ekranı görüntüsü gelecek - Ekran görüntüsü 2025-12-21 182439.png)*
 
 ### 3. Kayıt Ekranı
 Yeni kullanıcıların sisteme dahil olduğu form ekranı.
 
 ![Kayıt Ekranı](screenshots/kayit_ekrani.png)
-*(Buraya kayıt ekranı görüntüsü gelecek - Ekran görüntüsü 2025-12-21 182548.png)*
 
 ## 🛠 Kullanılan Teknolojiler
 
