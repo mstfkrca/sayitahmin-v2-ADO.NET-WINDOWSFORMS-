@@ -156,12 +156,15 @@ namespace sayitahmin_v2
                 return;
             }
 
-            // Renklendirme Mantığı (Değişmedi)
+            // Renklendirme Mantığı
             Color[] renkler = new Color[secilenBasamak];
             bool[] hedefKullanildi = new bool[secilenBasamak];
             bool[] tahminIsletildi = new bool[secilenBasamak];
 
             for (int i = 0; i < secilenBasamak; i++) renkler[i] = Color.Gray;
+
+            //başlangıçta tüm basamaklar gridir 1. tur sadece yeşilleri yakalar
+            //2.turda ise yeşiller tekrar kontrole girmez sadece turuncu kontorlü yapılır
 
             // 1. TUR: YEŞİL
             for (int i = 0; i < secilenBasamak; i++)
@@ -169,19 +172,19 @@ namespace sayitahmin_v2
                 if (tahmin[i] == hedefSayiStr[i])
                 {
                     renkler[i] = Color.Green;
-                    hedefKullanildi[i] = true;
-                    tahminIsletildi[i] = true;
+                    hedefKullanildi[i] = true; //aynı sayı turuncu boyanmasın diye true
+                    tahminIsletildi[i] = true; 
                 }
             }
 
             // 2. TUR: TURUNCU
             for (int i = 0; i < secilenBasamak; i++)
             {
-                if (!tahminIsletildi[i])
+                if (!tahminIsletildi[i])// yeşil olmayanlar için
                 {
                     for (int j = 0; j < secilenBasamak; j++)
                     {
-                        if (!hedefKullanildi[j] && tahmin[i] == hedefSayiStr[j])
+                        if (!hedefKullanildi[j] && tahmin[i] == hedefSayiStr[j]) //hedefte kullanılmamışsa ve tahmindeki rakam hedefte varsa
                         {
                             renkler[i] = Color.Orange;
                             hedefKullanildi[j] = true;
@@ -249,7 +252,7 @@ namespace sayitahmin_v2
             if (kazandi)
             {
                 MessageBox.Show($"TEBRİKLER! Sayıyı buldunuz.\nPuanınız: {puan}", "ŞAMPİYON", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                SkorKaydet(); // <-- İŞTE BEKLENEN AN! Veritabanına yazıyor.
+                SkorKaydet(); //Veritabanına yazıyor.
             }
             else
             {
@@ -267,12 +270,19 @@ namespace sayitahmin_v2
 
         private void btnSil_Click_1(object sender, EventArgs e)
         {
-
+            txtTahmin.Clear();
         }
 
         private void flowGecmis_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Bu komut, btnTahmin butonuna sanal olarak tıklar.
+            // Böylece btnTahmin içindeki tüm kodlar çalışır.
+            btnTahmin.PerformClick();
         }
     }
 }

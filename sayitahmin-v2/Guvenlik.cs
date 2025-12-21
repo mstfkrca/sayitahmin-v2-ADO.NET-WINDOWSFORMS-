@@ -6,8 +6,8 @@ namespace sayitahmin_v2
 {
     public static class Guvenlik
     {
-        // Bu metod, içine atılan şifreyi (örn: "1234") alır
-        // Geriye karmaşık, çözülemez bir kod (Hash) döndürür.
+        // Bu metod, içine atılan şifreyi alır
+        // Geriye karmaşık, çözülemez bir kod (hash) döndürür.
         public static string Sha256Yap(string rawData)
         {
             // SHA256 algoritmasını başlat
@@ -16,7 +16,7 @@ namespace sayitahmin_v2
                 // Veriyi byte dizisine çevir ve hashle
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
 
-                // Byte dizisini string'e (yazıya) çevir
+                // Byte dizisini stringe çevir
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {

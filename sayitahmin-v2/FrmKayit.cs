@@ -11,14 +11,14 @@ namespace sayitahmin_v2
             InitializeComponent();
         }
 
-        // SENİN GÜNCEL SQL BAĞLANTI ADRESİN
+        // sql bağlantısı
         SqlConnection baglanti = new SqlConnection(@"Data Source=LAPTOP-LTFP1SNI\SQLEXPRESS;Initial Catalog=SayiTahminDB;Integrated Security=True;TrustServerCertificate=True");
 
         private void btnKayitOl_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1. Boş alan kontrolü
+                //Boş alan kontrolü
                 if (txtKullaniciAdi.Text == "" || txtSifre.Text == "")
                 {
                     MessageBox.Show("Kullanıcı adı ve şifre zorunludur!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -27,7 +27,7 @@ namespace sayitahmin_v2
 
                 baglanti.Open();
 
-                // 2. Kullanıcı adı daha önce alınmış mı kontrolü
+                //Kullanıcı adı daha önce alınmış mı kontrolü
                 SqlCommand kontrolKomut = new SqlCommand("Select Count(*) From Tbl_Users where KullaniciAdi=@p1", baglanti);
                 kontrolKomut.Parameters.AddWithValue("@p1", txtKullaniciAdi.Text);
                 int kayitSayisi = Convert.ToInt32(kontrolKomut.ExecuteScalar());
@@ -39,8 +39,7 @@ namespace sayitahmin_v2
                     return;
                 }
 
-                // 3. KAYIT İŞLEMİ (Şifreleme Dahil)
-                // Dikkat: Tablondaki sütun adı 'Eposta' olduğu için burayı düzelttim.
+                //Kayıt işlemi (Şifreleme Dahil)
                 string sorgu = "INSERT INTO Tbl_Users (Ad, Soyad, KullaniciAdi, Sifre, Telefon, Eposta) VALUES (@p1, @p2, @p3, @p4, @p5, @p6)";
                 SqlCommand komut = new SqlCommand(sorgu, baglanti);
 
@@ -48,10 +47,10 @@ namespace sayitahmin_v2
                 komut.Parameters.AddWithValue("@p2", txtSoyad.Text);
                 komut.Parameters.AddWithValue("@p3", txtKullaniciAdi.Text);
 
-                // --- KRİTİK NOKTA: ŞİFREYİ HASHLEYİP (KODLAYIP) KAYDEDİYORUZ ---
+                //Şifre hashing
                 string sifreliSifre = Guvenlik.Sha256Yap(txtSifre.Text);
                 komut.Parameters.AddWithValue("@p4", sifreliSifre);
-                // -------------------------------------------------------------
+                
 
                 komut.Parameters.AddWithValue("@p5", txtTelefon.Text);
                 komut.Parameters.AddWithValue("@p6", txtEposta.Text);
@@ -67,6 +66,16 @@ namespace sayitahmin_v2
                 MessageBox.Show("Hata: " + ex.Message);
                 if (baglanti.State == System.Data.ConnectionState.Open) baglanti.Close();
             }
+        }
+
+        private void FrmKayit_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefon_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

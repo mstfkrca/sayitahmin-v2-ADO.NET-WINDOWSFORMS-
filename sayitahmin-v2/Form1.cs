@@ -11,7 +11,7 @@ namespace sayitahmin_v2
             InitializeComponent();
         }
 
-        // BAÐLANTI ADRESÝN (Laptop isminle güncelledim)
+        // sql baðlantýsý
         SqlConnection baglanti = new SqlConnection(@"Data Source=LAPTOP-LTFP1SNI\SQLEXPRESS;Initial Catalog=SayiTahminDB;Integrated Security=True;TrustServerCertificate=True");
 
         private void btnGiris_Click(object sender, EventArgs e)
@@ -20,7 +20,7 @@ namespace sayitahmin_v2
             {
                 baglanti.Open();
 
-                // DÝKKAT: Þifreyi güvenlik kontrolünden geçirip (Hashleyip) öyle soruyoruz.
+                //Þifreyi güvenlik kontrolünden geçirip (hashleyip) öyle soruyoruz.
                 // Çünkü veritabanýnda þifre "1234" diye deðil, karmaþýk kod olarak duruyor.
                 string sifreliGiris = Guvenlik.Sha256Yap(txtSifre.Text);
 
@@ -56,21 +56,33 @@ namespace sayitahmin_v2
             }
         }
 
-        // --- KAYIT OL BUTONUNA TIKLANINCA ---
-        // Tasarýmda eklediðin "Kayýt Ol" butonunun Click olayýna bu kodu baðla
-        // Eðer butonun adý farklýysa bu metodun içindekileri oraya kopyala.
+        //KAYIT OL BUTONUNA TIKLANINCA
+
         private void btnKayitOl_Click(object sender, EventArgs e)
         {
             FrmKayit fr = new FrmKayit();
             fr.Show();
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e) { }
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnKayitOl_Click_1(object sender, EventArgs e)
         {
             FrmKayit fr = new FrmKayit(); // Kayýt formunu oluþtur
             fr.Show();                    // Formu göster
+        }
+
+        private void txtKullaniciAdi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmLogin_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
