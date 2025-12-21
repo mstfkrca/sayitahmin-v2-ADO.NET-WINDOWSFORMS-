@@ -28,17 +28,17 @@ Oyunun ana arayüzü. Kullanıcı tahminlerini yapar, renkli ipuçlarını gör�
 * **Turuncu:** Sayı var ama yeri yanlış.
 * **Gri:** Sayı yok.
 
-![Oyun Ekranı](https://github.com/user-attachments/assets/f9bf49f5-dcb8-4a29-a0b0-9f73d62b8e0e)
+![Oyun Ekranı](https://github.com/user-attachments/assets/fb7112ff-aebc-4d85-906c-dd8625758967)
 
 ### 2. Giriş Ekranı
 Kullanıcıların oyuna erişmek için kullandığı güvenli giriş paneli.
 
-![Giriş Ekranı](https://github.com/user-attachments/assets/20d733a3-b8ea-48b0-a2d2-1db61fae8d68)
+![Giriş Ekranı](https://github.com/user-attachments/assets/f9bf49f5-dcb8-4a29-a0b0-9f73d62b8e0e)
 
 ### 3. Kayıt Ekranı
 Yeni kullanıcıların sisteme dahil olduğu form ekranı.
 
-![Kayıt Ekranı](https://github.com/user-attachments/assets/fb7112ff-aebc-4d85-906c-dd8625758967)
+![Kayıt Ekranı](https://github.com/user-attachments/assets/20d733a3-b8ea-48b0-a2d2-1db61fae8d68)
 
 ## 🛠 Kullanılan Teknolojiler
 
