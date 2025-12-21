@@ -28,17 +28,17 @@ Oyunun ana arayüzü. Kullanıcı tahminlerini yapar, renkli ipuçlarını gör�
 * **Turuncu:** Sayı var ama yeri yanlış.
 * **Gri:** Sayı yok.
 
-![Oyun Ekranı](<img width="786" height="471" alt="Image" src="https://github.com/user-attachments/assets/f9bf49f5-dcb8-4a29-a0b0-9f73d62b8e0e" />)
+![Oyun Ekranı](https://github.com/user-attachments/assets/f9bf49f5-dcb8-4a29-a0b0-9f73d62b8e0e)
 
 ### 2. Giriş Ekranı
 Kullanıcıların oyuna erişmek için kullandığı güvenli giriş paneli.
 
-![Giriş Ekranı](<img width="812" height="536" alt="Image" src="https://github.com/user-attachments/assets/20d733a3-b8ea-48b0-a2d2-1db61fae8d68" />)
+![Giriş Ekranı](https://github.com/user-attachments/assets/20d733a3-b8ea-48b0-a2d2-1db61fae8d68)
 
 ### 3. Kayıt Ekranı
 Yeni kullanıcıların sisteme dahil olduğu form ekranı.
 
-![Kayıt Ekranı](<img width="1303" height="811" alt="Image" src="https://github.com/user-attachments/assets/fb7112ff-aebc-4d85-906c-dd8625758967" />)
+![Kayıt Ekranı](https://github.com/user-attachments/assets/fb7112ff-aebc-4d85-906c-dd8625758967)
 
 ## 🛠 Kullanılan Teknolojiler
 
@@ -69,4 +69,4 @@ Yeni kullanıcıların sisteme dahil olduğu form ekranı.
 5.  Toplam 10 tahmin hakkınız vardır. En kısa sürede ve en az denemede bilmek daha yüksek puan kazandırır!
 
 ---
-**Geliştirici:** [Adınız Soyadınız]
+**Geliştirici:** [MUSTAFA KARACA]
