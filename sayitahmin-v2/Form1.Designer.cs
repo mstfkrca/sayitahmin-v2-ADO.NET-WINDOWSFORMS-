@@ -102,7 +102,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HotTrack;
-            ClientSize = new Size(1714, 1055);
+            ClientSize = new Size(1158, 669);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnKayitOl);

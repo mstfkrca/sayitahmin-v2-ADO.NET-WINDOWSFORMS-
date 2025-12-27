@@ -308,6 +308,7 @@
             lstSkorlar.Name = "lstSkorlar";
             lstSkorlar.Size = new Size(267, 224);
             lstSkorlar.TabIndex = 10;
+            lstSkorlar.SelectedIndexChanged += lstSkorlar_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -335,7 +336,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HotTrack;
-            ClientSize = new Size(1338, 1055);
+            ClientSize = new Size(1312, 750);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(lstSkorlar);

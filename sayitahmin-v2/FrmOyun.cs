@@ -55,8 +55,10 @@ namespace sayitahmin_v2
                 // Puanı en yüksek olan ilk 5 kişiyi çekiyoruz. Kullanıcı adını görmek için JOIN yaptık.
                 SqlCommand komut = new SqlCommand("SELECT TOP 5 Tbl_Users.Ad, Tbl_Scores.Puan FROM Tbl_Scores INNER JOIN Tbl_Users ON Tbl_Scores.UserID = Tbl_Users.UserID ORDER BY Puan DESC", baglanti);
                 SqlDataReader dr = komut.ExecuteReader();
+                lstSkorlar.Items.Add("Adınız ve Puanınız: ");
                 while (dr.Read())
                 {
+                    
                     lstSkorlar.Items.Add(dr[0] + " - " + dr[1] + " Puan");
                 }
                 baglanti.Close();
@@ -94,7 +96,7 @@ namespace sayitahmin_v2
         }
 
         // --- SANAL KLAVYE OLAYLARI ---
-        // Bu metodu tüm rakam butonlarına (btn0...btn9) bağlayacağız!
+
         private void RakamButon_Click(object sender, EventArgs e)
         {
             if (txtTahmin.Text.Length < secilenBasamak)
@@ -173,7 +175,7 @@ namespace sayitahmin_v2
                 {
                     renkler[i] = Color.Green;
                     hedefKullanildi[i] = true; //aynı sayı turuncu boyanmasın diye true
-                    tahminIsletildi[i] = true; 
+                    tahminIsletildi[i] = true;
                 }
             }
 
@@ -283,6 +285,11 @@ namespace sayitahmin_v2
             // Bu komut, btnTahmin butonuna sanal olarak tıklar.
             // Böylece btnTahmin içindeki tüm kodlar çalışır.
             btnTahmin.PerformClick();
+        }
+
+        private void lstSkorlar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
