@@ -28,20 +28,17 @@ Oyunun ana arayüzü. Kullanıcı tahminlerini yapar, renkli ipuçlarını gör�
 * **Turuncu:** Sayı var ama yeri yanlış.
 * **Gri:** Sayı yok.
 
-![Oyun Ekranı](screenshots/oyun_ekrani.png)
-*(Buraya oyun ekranı görüntüsü gelecek - Ekran görüntüsü 2025-12-21 161706.png)*
+![Oyun Ekranı](https://github.com/user-attachments/assets/fb7112ff-aebc-4d85-906c-dd8625758967)
 
 ### 2. Giriş Ekranı
 Kullanıcıların oyuna erişmek için kullandığı güvenli giriş paneli.
 
-![Giriş Ekranı](screenshots/giris_ekrani.png)
-*(Buraya giriş ekranı görüntüsü gelecek - Ekran görüntüsü 2025-12-21 182439.png)*
+![Giriş Ekranı](https://github.com/user-attachments/assets/f9bf49f5-dcb8-4a29-a0b0-9f73d62b8e0e)
 
 ### 3. Kayıt Ekranı
 Yeni kullanıcıların sisteme dahil olduğu form ekranı.
 
-![Kayıt Ekranı](screenshots/kayit_ekrani.png)
-*(Buraya kayıt ekranı görüntüsü gelecek - Ekran görüntüsü 2025-12-21 182548.png)*
+![Kayıt Ekranı](https://github.com/user-attachments/assets/20d733a3-b8ea-48b0-a2d2-1db61fae8d68)
 
 ## 🛠 Kullanılan Teknolojiler
 
@@ -71,5 +68,75 @@ Yeni kullanıcıların sisteme dahil olduğu form ekranı.
 4.  **Turuncu kutu:** Rakam sayıda var ama yeri yanlış.
 5.  Toplam 10 tahmin hakkınız vardır. En kısa sürede ve en az denemede bilmek daha yüksek puan kazandırır!
 
----
-**Geliştirici:** [Adınız Soyadınız]
+ ## 🗄️ Veritabanı SQL Scriptleri
+
+Projenin çalışması için gerekli tabloları oluşturmak adına, SQL Server Management Studio'da (SSMS) `New Query` diyerek aşağıdaki kodları çalıştırınız.
+
+```sql
+USE [master]
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'SayiTahminDB')
+BEGIN
+    CREATE DATABASE [SayiTahminDB]
+END
+GO
+
+USE [SayiTahminDB]
+GO
+
+/****** 1. TABLO: Tbl_Users (Kullanıcılar) ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tbl_Users](
+	[UserID] [int] IDENTITY(1,1) NOT NULL,
+	[KullaniciAdi] [nvarchar](50) NOT NULL,
+	[Sifre] [nvarchar](256) NOT NULL,
+	[Ad] [nvarchar](50) NULL,
+	[Soyad] [nvarchar](50) NULL,
+	[Telefon] [nvarchar](15) NULL,
+	[Eposta] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[KullaniciAdi] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** 2. TABLO: Tbl_Scores (Skorlar) ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tbl_Scores](
+	[ScoreID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [int] NOT NULL,
+	[Puan] [int] NULL,
+	[SureSaniye] [int] NULL,
+	[BasamakSayisi] [tinyint] NULL,
+	[OyunTarihi] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ScoreID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Tbl_Scores] ADD  DEFAULT ((0)) FOR [Puan]
+GO
+
+ALTER TABLE [dbo].[Tbl_Scores] ADD  DEFAULT (getdate()) FOR [OyunTarihi]
+GO
+
+ALTER TABLE [dbo].[Tbl_Scores]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Tbl_Users] ([UserID])
+GO
+
