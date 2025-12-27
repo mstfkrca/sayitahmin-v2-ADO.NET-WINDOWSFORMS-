@@ -68,5 +68,100 @@ Yeni kullanıcıların sisteme dahil olduğu form ekranı.
 4.  **Turuncu kutu:** Rakam sayıda var ama yeri yanlış.
 5.  Toplam 10 tahmin hakkınız vardır. En kısa sürede ve en az denemede bilmek daha yüksek puan kazandırır!
 
+ ## SQL SCRİPTS: 
+ USE [SayiTahminDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tbl_Users](
+	[UserID] [int] IDENTITY(1,1) NOT NULL,
+	[KullaniciAdi] [nvarchar](50) NOT NULL,
+	[Sifre] [nvarchar](256) NOT NULL,
+	[Ad] [nvarchar](50) NULL,
+	[Soyad] [nvarchar](50) NULL,
+	[Telefon] [nvarchar](15) NULL,
+	[Eposta] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[KullaniciAdi] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+--
+USE [SayiTahminDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tbl_Users](
+	[UserID] [int] IDENTITY(1,1) NOT NULL,
+	[KullaniciAdi] [nvarchar](50) NOT NULL,
+	[Sifre] [nvarchar](256) NOT NULL,
+	[Ad] [nvarchar](50) NULL,
+	[Soyad] [nvarchar](50) NULL,
+	[Telefon] [nvarchar](15) NULL,
+	[Eposta] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[KullaniciAdi] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [USE [SayiTahminDB]
+GO
+
+/****** Object:  Table [dbo].[Tbl_Scores]    Script Date: 27.12.2025 15:09:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tbl_Scores](
+	[ScoreID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [int] NOT NULL,
+	[Puan] [int] NULL,
+	[SureSaniye] [int] NULL,
+	[BasamakSayisi] [tinyint] NULL,
+	[OyunTarihi] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ScoreID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Tbl_Scores] ADD  DEFAULT ((0)) FOR [Puan]
+GO
+
+ALTER TABLE [dbo].[Tbl_Scores] ADD  DEFAULT (getdate()) FOR [OyunTarihi]
+GO
+
+ALTER TABLE [dbo].[Tbl_Scores]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Tbl_Users] ([UserID])
+GO
+
+
+PRIMARY]
+GO
+
+
+
+
 ---
 **Geliştirici:** [MUSTAFA KARACA]
